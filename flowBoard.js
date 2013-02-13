@@ -42,10 +42,6 @@ flowBoard.Board = function() {
         self.columns.push(new flowBoard.Column("New Column"));
     }
 
-    self.addItem = function() {
-        self.columns()[0].addItem();
-    }
-
     self.removeColumn = function(column) { 
         self.columns.remove(column)
     }
@@ -56,25 +52,8 @@ flowBoard.Board = function() {
 
     self.loadBoard = function() {
         var columnIndex, newColumn, itemIndex, newItem;
-        var newboard = { columns: [
-                { name: "First", items: [
-                        {text: "test 1"},
-                        {text: "test 2"}
-                    ]
-                },
-                { name: "Second", items: [
-                        {text: "2 test 1"}
-                    ]
-                },
-                { name: "Third", items: [
-                        {text: "3 test 1"},
-                        {text: "3 test 2"},
-                        {text: "3 test 2"},
 
-                    ]
-                }
-            ]
-        };
+        var newboard = JSON.parse(localStorage.getItem('board'));
 
         self.clearBoard();
         
@@ -87,6 +66,10 @@ flowBoard.Board = function() {
             self.columns.push(newColumn);
         }
     }
+
+    self.saveBoard = function() {
+        localStorage.setItem('board', ko.toJSON(self));
+    } 
 }
 
 ko.applyBindings(new flowBoard.Board());

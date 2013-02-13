@@ -7,11 +7,14 @@
 </head>
 <body>
     <button data-bind="click: addColumn">Add Column</button>
-    <button data-bind="click: addItem">Add Item</button>
-     <button data-bind="click: clearBoard">Clear Board</button>
-     <button data-bind="click: loadBoard">Load Board</button>
+    <button data-bind="click: clearBoard">Clear Board</button>
+    <button data-bind="click: loadBoard">Load Board</button>
+    <button data-bind="click: saveBoard">Save Board</button>
     <div class="row" data-bind="foreach: columns">
         <div class="column">
+            <div>
+                <button data-bind="click: addItem">Add Item</button>
+            </div>
             <input data-bind="value: name"/>
             <a href="#" data-bind="click: $root.removeColumn">X</a>
             <div data-bind="foreach: $data.items">  
