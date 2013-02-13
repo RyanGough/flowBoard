@@ -16,11 +16,9 @@ flowBoard.Column = function(name) {
         new flowBoard.Item("Do more work")
     ]);
 
-    self.addItem = function(item) {
-    	self.items.push(item);
-    }
-
-    self.removeItem = function(item) { self.items.remove(item) }
+    self.addItem = function() {
+        self.items.push(new flowBoard.Item("New Item"));
+    }  
 }
 
 // Overall viewmodel for this screen, along with initial state
@@ -36,6 +34,10 @@ flowBoard.Board = function() {
     self.addColumn = function() {
         self.columns.push(new flowBoard.Column("New Column"));
     }
+
+    self.addItem = function() {
+        self.columns()[0].addItem();
+    } 
 
     self.removeColumn = function(column) { self.columns.remove(column) }
 }
