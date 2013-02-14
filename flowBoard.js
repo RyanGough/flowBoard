@@ -21,6 +21,10 @@ flowBoard.Column = function(name) {
 
     self.addItem = function() {
         self.items.push(new flowBoard.Item("New Item"));
+    }
+
+    self.appendItem = function(item) {
+        self.items.push(item);
     }  
     
     self.removeItem = function(item) {
@@ -37,6 +41,9 @@ flowBoard.Board = function() {
         new flowBoard.Column("ToDo"),
         new flowBoard.Column("InDev")
     ]);
+
+    self.selectedColumn = null;
+    self.selectedItem = null;
 
     self.addColumn = function() {
         self.columns.push(new flowBoard.Column("New Column"));
@@ -69,7 +76,30 @@ flowBoard.Board = function() {
 
     self.saveBoard = function() {
         localStorage.setItem('board', ko.toJSON(self));
+    }
+
+    self.selectItem = function(item) {
+        self.selectedItem = item;
+        return true;
     } 
+
+    self.selectColumnDown = function(column) {
+        self.selectedColumn = column;
+        return true;
+    }
+
+    self.selectColumnUp = function(column) {
+        if (column.name === self.selectedColumn.name) {
+            return true;
+        }
+        
+        if (self.selectedItem) {
+            self.selectedColumn.removeItem(self.selectedItem);
+            column.appendItem(self.selectedItem);
+            self.selectedItem = null;
+        }
+        return true;
+    }
 }
 
 ko.applyBindings(new flowBoard.Board());
