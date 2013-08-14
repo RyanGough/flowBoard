@@ -15,8 +15,6 @@ flowBoard.Column = function(name) {
     
     // Editable data
     self.items = ko.observableArray([
-        new flowBoard.Item("Do some work"),
-        new flowBoard.Item("Do more work")
     ]);
 
     self.addItem = function() {

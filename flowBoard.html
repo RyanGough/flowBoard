@@ -21,12 +21,15 @@
                 </div>
                 <input data-bind="value: name"/>
                 <a href="#" data-bind="click: $root.removeColumn">X</a>
-                <div data-bind="foreach: $data.items">  
-                    <div data-bind="event: { mousedown: $root.selectItem}">
-                        <input data-bind="value: text"/>
+                <ul class="list-group" data-bind="foreach: $data.items">  
+                    <div class="list-group" data-bind="event: { mousedown: $root.selectItem}">
+                        <li class="list-group-item">
+                        <!-- <input data-bind="value: text"/> -->
+                        <span data-bind="text: text"></span>
                         <a href="#" data-bind="click: $parent.removeItem">X</a>
+                        </li>
                     </div> 
-                </div>  
+                </ul>  
             </div>
         </div>
     </div>
