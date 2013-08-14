@@ -33,3 +33,7 @@ div.columnHeader li
 .column > div {
 	padding: 5px;
 }
+
+body{
+  margin: 5px;
+}
