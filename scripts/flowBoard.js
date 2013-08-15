@@ -7,6 +7,11 @@ flowBoard.Item = function(text) {
     var self = this;
     self.id = flowBoard.nextItemId++;
     self.text = ko.observable(text);
+    self.isEditing = ko.observable(false);
+
+    self.toggleEdit = function() {
+        self.isEditing(!self.isEditing());
+    }
 }
 
 flowBoard.Column = function(name) {
