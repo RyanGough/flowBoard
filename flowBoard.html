@@ -17,7 +17,7 @@
         <button data-bind="click: saveBoard">Save Board</button>
 
         <div class="row" data-bind="foreach: columns">
-            <div class="column" data-bind="event: { mouseup: $root.selectColumnUp, mousedown: $root.selectColumnDown}"/>
+            <div class="column" data-bind="event: { dragenter: $root.columnDragOver, dragstart: $root.columnStartDrag, dragend: $root.endItemDrag}"/>
                 <div>
                     <button data-bind="click: addItem">Add Item</button>
                 </div>
@@ -25,7 +25,7 @@
                 <a href="#" data-bind="click: $root.removeColumn">X</a>
                 <ul class="list-group" data-bind="foreach: $data.items">  
                     <div class="list-group" data-bind="event: { mousedown: $root.selectItem}">
-                        <li class="list-group-item">
+                        <li draggable="true" class="list-group-item">
                             <input data-bind="value: text, visible: isEditing()"/>
                             <span data-bind="text: text, visible: !isEditing()"></span>
                             <button data-bind="click: toggleEdit" class="glyphicon glyphicon-pencil"/>

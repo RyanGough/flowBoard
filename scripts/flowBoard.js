@@ -45,7 +45,8 @@ flowBoard.Board = function() {
         new flowBoard.Column("InDev")
     ]);
 
-    self.selectedColumn = null;
+    self.dragSourceColumn = null;
+    self.dragTargetColumn = null;
     self.selectedItem = null;
 
     self.addColumn = function() {
@@ -82,23 +83,31 @@ flowBoard.Board = function() {
     }
 
     self.selectItem = function(item) {
+        console.log("selected item")
         self.selectedItem = item;
         return true;
     } 
 
-    self.selectColumnDown = function(column) {
-        self.selectedColumn = column;
+    self.columnStartDrag = function(column) {
+        console.log("select source column")
+        self.dragSourceColumn = column;
         return true;
     }
 
-    self.selectColumnUp = function(column) {
-        if (column.name === self.selectedColumn.name) {
+    self.columnDragOver = function(column) {
+        console.log("select target column")
+        self.dragTargetColumn = column;
+        return true;        
+    }
+
+    self.endItemDrag = function() {
+        if (self.dragTargetColumn === self.dragSourceColumn) {
             return true;
         }
         
         if (self.selectedItem) {
-            self.selectedColumn.removeItem(self.selectedItem);
-            column.appendItem(self.selectedItem);
+            self.dragSourceColumn.removeItem(self.selectedItem);
+            self.dragTargetColumn.appendItem(self.selectedItem);
             self.selectedItem = null;
         }
         return true;
@@ -106,3 +115,7 @@ flowBoard.Board = function() {
 }
 
 ko.applyBindings(new flowBoard.Board());
+
+function onItemDropped(){
+    alert("hehllo");
+}

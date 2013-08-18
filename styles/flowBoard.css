@@ -37,3 +37,7 @@ div.columnHeader li
 body{
   margin: 5px;
 }
+
+.list-group-item{
+  cursor: move;
+}
