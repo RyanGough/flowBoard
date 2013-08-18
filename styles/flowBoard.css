@@ -41,3 +41,7 @@ body{
 .list-group-item{
   cursor: move;
 }
+
+.addItemLink {
+  cursor: pointer;
+}
