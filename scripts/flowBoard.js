@@ -12,6 +12,14 @@ flowBoard.Item = function(text) {
     self.toggleEdit = function() {
         self.isEditing(!self.isEditing());
     }
+
+    self.toggleEditEnterKey = function (data, event) { 
+        if (event.keyCode == 13) {
+            console.log("toggleEditEnterKey event");
+            self.toggleEdit(); 
+        }
+        return true;
+    }
 }
 
 flowBoard.Column = function(name) {
