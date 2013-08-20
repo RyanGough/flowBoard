@@ -26,6 +26,20 @@ flowBoard.Column = function(name) {
     var self = this;
     self.name = ko.observable(name);
     
+    self.isEditing = ko.observable(false);
+
+    self.toggleEdit = function(){
+        self.isEditing(!self.isEditing());
+    }
+
+    self.toggleEditEnterKey = function(data, event){
+        if (event.keyCode == 13) {
+            console.log("Column header - toggleEditEnterKey event");
+            self.toggleEdit(); 
+        }
+        return true;
+    }
+
     // Editable data
     self.items = ko.observableArray([
     ]);
