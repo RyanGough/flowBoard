@@ -26,42 +26,46 @@
         </div><!-- /.navbar-collapse -->
     </nav>
 
-    <div class="container" id="board-container">
+    <div id="board-wrapper">
 
-        <div class="row" data-bind="foreach: columns">
-            <div class="column" data-bind="event: { dragenter: $root.columnDragOver, dragstart: $root.columnStartDrag, dragend: $root.endItemDrag}"/>
-                <div class="column-header">
+        <div class="container" id="board-container">
 
-                    <div class="column-header-editing" data-bind="visible: isEditing()">
-                        <input data-bind="value: name, visible: isEditing()"/>
-                        <div class="btn-group">
-                            <button data-bind="click: toggleEdit" class="glyphicon glyphicon-check btn btn-xs btn-success" />
-                            <button data-bind="click: $root.removeColumn" class="glyphicon glyphicon-trash btn btn-xs btn-danger" />
+            <div class="row" data-bind="foreach: columns">
+                <div class="column col-md-3" data-bind="event: { dragenter: $root.columnDragOver, dragstart: $root.columnStartDrag, dragend: $root.endItemDrag}"/>
+                    <div class="column-header">
+
+                        <div class="column-header-editing" data-bind="visible: isEditing()">
+                            <input data-bind="value: name, visible: isEditing()"/>
+                            <div class="btn-group pull-right">
+                                <button data-bind="click: toggleEdit" class="glyphicon glyphicon-check btn btn-xs btn-success" />
+                                <button data-bind="click: $root.removeColumn" class="glyphicon glyphicon-trash btn btn-xs btn-danger" />
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="column-header-static" data-bind="visible: !isEditing()">
-                        <span data-bind="text: name"></span>
-                        <button data-bind="click: toggleEdit" class="glyphicon glyphicon-edit btn btn-xs btn-primary"/>
+                        <div class="column-header-static" data-bind="visible: !isEditing()">
+                            <span data-bind="text: name"></span>
+                            <button data-bind="click: toggleEdit" class="glyphicon glyphicon-edit btn btn-xs btn-primary pull-right"/>
+                        </div>
+                        
                     </div>
-                    
-                </div>
-                <div>
-                    <ul class="list-group" data-bind="foreach: $data.items">  
-                        <div class="list-group" data-bind="event: { mousedown: $root.selectItem}">
-                            <li draggable="true" class="list-group-item">
-                                <input data-bind="value: text, visible: isEditing(), valueUpdate: 'afterkeydown', event: { keypress: toggleEditEnterKey }"/>
-                                <span data-bind="text: text, visible: !isEditing()"></span>
-                                <button data-bind="click: toggleEdit" class="glyphicon glyphicon-pencil"/>
-                            </li>
-                        </div> 
-                    </ul> 
-                </div>
-                <div>
-                    <a class="addItemLink" data-bind="click: addItem">Add Item</a>
+                    <div>
+                        <ul class="list-group" data-bind="foreach: $data.items">  
+                            <div class="list-group" data-bind="event: { mousedown: $root.selectItem}">
+                                <li draggable="true" class="list-group-item">
+                                    <input data-bind="value: text, visible: isEditing(), valueUpdate: 'afterkeydown', event: { keypress: toggleEditEnterKey }"/>
+                                    <span data-bind="text: text, visible: !isEditing()"></span>
+                                    <button data-bind="click: toggleEdit" class="glyphicon glyphicon-pencil"/>
+                                </li>
+                            </div> 
+                        </ul> 
+                    </div>
+                    <div>
+                        <a class="addItemLink" data-bind="click: addItem">Add Item</a>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
     <script src="scripts/lib/knockout.min.js"></script>
     <script src="scripts/flowBoard.js"></script>
