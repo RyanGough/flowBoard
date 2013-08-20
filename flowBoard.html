@@ -31,8 +31,20 @@
         <div class="row" data-bind="foreach: columns">
             <div class="column" data-bind="event: { dragenter: $root.columnDragOver, dragstart: $root.columnStartDrag, dragend: $root.endItemDrag}"/>
                 <div class="column-header">
-                    <input data-bind="value: name"/>
-                    <a href="#" class="btn btn-xs btn-danger" data-bind="click: $root.removeColumn">X</a>
+
+                    <div class="column-header-editing" data-bind="visible: isEditing()">
+                        <input data-bind="value: name, visible: isEditing()"/>
+                        <div class="btn-group">
+                            <button data-bind="click: toggleEdit" class="glyphicon glyphicon-check btn btn-xs btn-success" />
+                            <button data-bind="click: $root.removeColumn" class="glyphicon glyphicon-trash btn btn-xs btn-danger" />
+                        </div>
+                    </div>
+
+                    <div class="column-header-static" data-bind="visible: !isEditing()">
+                        <span data-bind="text: name"></span>
+                        <button data-bind="click: toggleEdit" class="glyphicon glyphicon-edit btn btn-xs btn-primary"/>
+                    </div>
+                    
                 </div>
                 <div>
                     <ul class="list-group" data-bind="foreach: $data.items">  
