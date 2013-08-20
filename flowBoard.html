@@ -26,13 +26,13 @@
         </div><!-- /.navbar-collapse -->
     </nav>
 
-    <div class="container">
+    <div class="container" id="board-container">
 
         <div class="row" data-bind="foreach: columns">
             <div class="column" data-bind="event: { dragenter: $root.columnDragOver, dragstart: $root.columnStartDrag, dragend: $root.endItemDrag}"/>
-                <div>
+                <div class="column-header">
                     <input data-bind="value: name"/>
-                    <a href="#" data-bind="click: $root.removeColumn">X</a>
+                    <a href="#" class="btn btn-xs btn-danger" data-bind="click: $root.removeColumn">X</a>
                 </div>
                 <div>
                     <ul class="list-group" data-bind="foreach: $data.items">  
