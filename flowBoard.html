@@ -29,12 +29,12 @@
     <div class="container">
 
         <div class="row" data-bind="foreach: columns">
-            <div class="column panel" data-bind="event: { dragenter: $root.columnDragOver, dragstart: $root.columnStartDrag, dragend: $root.endItemDrag}"/>
-                <div class="panel-heading">
+            <div class="column" data-bind="event: { dragenter: $root.columnDragOver, dragstart: $root.columnStartDrag, dragend: $root.endItemDrag}"/>
+                <div>
                     <input data-bind="value: name"/>
                     <a href="#" data-bind="click: $root.removeColumn">X</a>
                 </div>
-                <div class="panel-body">
+                <div>
                     <ul class="list-group" data-bind="foreach: $data.items">  
                         <div class="list-group" data-bind="event: { mousedown: $root.selectItem}">
                             <li draggable="true" class="list-group-item">
@@ -45,7 +45,7 @@
                         </div> 
                     </ul> 
                 </div>
-                <div class="panel-footer">
+                <div>
                     <a class="addItemLink" data-bind="click: addItem">Add Item</a>
                 </div>
             </div>
