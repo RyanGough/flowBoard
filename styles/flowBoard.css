@@ -1,3 +1,8 @@
+body{
+    margin: 5px;
+}
+
+
 div.columnHeader ul
 {
     /* Positioning */
@@ -15,33 +20,46 @@ div.columnHeader li
 }
 
 .row {
-  /* flexbox setup */
-  display: -webkit-box;
-  -webkit-box-orient: horizontal;
+    /* flexbox setup */
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
 }
 
 .row > div {
-	padding: 5px;
+    padding: 5px;
 }
 
 .column {
-  /* flexbox setup */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+    /* flexbox setup */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .column > div {
-	padding: 5px;
-}
-
-body{
-  margin: 5px;
+    padding: 5px;
 }
 
 .list-group-item{
-  cursor: move;
+    cursor: move;
 }
 
 .addItemLink {
-  cursor: pointer;
+    cursor: pointer;
 }
+
+#board-container {
+
+}
+
+    #board-container div.column {
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #efefef;
+    }
+
+        #board-container div.column div.column-header {
+            border-radius: 5px 5px 0 0;
+            border-bottom: 1px solid #afafaf;
+            background-color: #efefef;
+        }
+
